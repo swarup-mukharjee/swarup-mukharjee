@@ -23,18 +23,15 @@ jobs:
           card: stats
           options: username=swarup-mukharjee&show_icons=true&include_all_commits=true
           path: profile/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Top Languages
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: top-langs
-          options: username=swarup-mukharjee&layout=compact
+          options: username=swarup-mukharjee&layout=compact&langs_count=6
           path: profile/top-langs.svg
-
-      - name: Generate User Statistics
-        uses: cicirello/user-statistician@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit updated statistics
         run: |
