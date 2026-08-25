@@ -21,7 +21,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: stats
-          options: username=swarup-mukharjee&show_icons=true&include_all_commits=true
+          options: username=swarup-mukharjee&show_icons=true
           path: profile/stats.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -40,6 +40,9 @@ jobs:
 
           git add profile/
 
-          git diff --cached --quiet || git commit -m "chore: update GitHub profile stats"
-
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update GitHub profile stats"
+            git push
+          fi
